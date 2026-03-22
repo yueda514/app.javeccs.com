@@ -1,0 +1,26 @@
+{
+  "name": "4th JaVECCS International Symposium 2027",
+  "short_name": "JaVECCS 2027",
+  "description": "第4回 日本獣医救急集中治療学会 国際シンポジウム — Official Conference App",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a3545",
+  "theme_color": "#2b4c5e",
+  "lang": "ja",
+  "categories": ["education", "medical"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

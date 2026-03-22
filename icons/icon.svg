@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#2b4c5e"/>
+  <rect y="0" width="512" height="8" fill="#c9a84c"/>
+  <rect y="504" width="512" height="8" fill="#c9a84c"/>
+  <text x="256" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="72" fill="#c9a84c" letter-spacing="2">JaVECCS</text>
+  <line x1="156" y1="230" x2="356" y2="230" stroke="#c9a84c" stroke-width="3"/>
+  <text x="256" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="96" fill="#ffffff">2027</text>
+  <text x="256" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-weight="600" font-size="36" fill="#c9a84c">3/12-14</text>
+  <text x="256" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-weight="600" font-size="28" fill="#8fa3b0">TOKYO</text>
+  <text x="256" y="460" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#8fa3b0">International Symposium</text>
+</svg>
