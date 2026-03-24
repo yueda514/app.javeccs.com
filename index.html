@@ -174,7 +174,7 @@
     }
 
     // ─── Image URLs from official site ───────────────────────────────
-    const HERO_IMG = "https://static.wixstatic.com/media/463594_1c0603f332e841b39dc26034546a333d~mv2.jpg/v1/crop/x_3,y_0,w_1917,h_1080/fill/w_1674,h_943,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2027%E5%9B%BD%E9%9A%9B%E5%A4%A7%E4%BC%9A%E5%AE%A3%E6%9D%90%E8%B3%87%E6%96%99_edited.jpg";
+    const HERO_IMG = "icons/hero.jpg";
     const LOGO_IMG = "https://static.wixstatic.com/media/463594_bdce1b52b6e447c1b47cdb997d4c15b7~mv2.png/v1/crop/x_0,y_536,w_2430,h_1358/fill/w_195,h_109,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/JaVECCS%EF%BC%BFLogo.png";
     const LOGO_WHITE = "icons/logo-white.png";
     const LOGO_DARK = "icons/logo-dark.png";
@@ -221,11 +221,11 @@
         wifiInfo: "Wi-Fi: JaVECCS2027 / Password: veccs2027",
         emergencyContact: "Emergency Contact", emergencyPhone: "+81-3-XXXX-XXXX",
         registration: "Registration",
-        regDesk: "Registration desk opens at 8:00 AM each day at the Main Lobby.",
+        regDesk: "Registration desk opens at 8:30 AM on March 13 and 8:00 AM on March 14, at the Main Lobby.",
         lunch: "Lunch & Breaks",
         lunchInfo: "Lunch boxes provided for registered attendees. Coffee & snacks available during breaks.",
         social: "Social Event",
-        socialInfo: "Welcome Reception — March 13, 18:30 at the venue (included with registration).",
+        socialInfo: "Welcome Reception — March 13, 18:30 at the Exhibit Hall (included with registration).",
         cme: "CE Credits",
         cmeInfo: "Continuing education credits available. Please scan your badge at each session.",
         countdown: "days until the symposium",
@@ -266,11 +266,11 @@
         wifiInfo: "Wi-Fi: JaVECCS2027 / パスワード: veccs2027",
         emergencyContact: "緊急連絡先", emergencyPhone: "+81-3-XXXX-XXXX",
         registration: "受付",
-        regDesk: "受付は毎日午前8時よりメインロビーにて開始します。",
+        regDesk: "受付はメインロビーにて、3月13日は午前8時30分から、3月14日は午前8時から開始します。",
         lunch: "昼食・休憩",
         lunchInfo: "登録済みの方にはお弁当をご用意しております。休憩時間にはコーヒー・軽食がございます。",
         social: "懇親会",
-        socialInfo: "ウェルカムレセプション — 3月13日 18:30〜 会場内にて（参加費込み）",
+        socialInfo: "ウェルカムレセプション — 3月13日 18:30〜 Exhibit Hall（協賛部屋）にて（参加費込み）",
         cme: "CE単位",
         cmeInfo: "継続教育単位が取得できます。各セッションでバッジをスキャンしてください。",
         countdown: "日後にシンポジウム開催",
@@ -304,7 +304,7 @@
       { id: 8, day: 1, time: "13:00–14:00", title: { en: "Pain Management in the Emergency Room", ja: "救急外来における疼痛管理" }, type: "invited", track: "main", speakerId: null, abstract: { en: "Multimodal analgesia protocols and regional anesthesia techniques applicable in the emergency setting.", ja: "救急現場で適用可能なマルチモーダル鎮痛プロトコルと局所麻酔技術。" } },
       { id: 9, day: 1, time: "14:15–15:15", title: { en: "Point-of-Care Echocardiography", ja: "ポイントオブケア心エコー" }, type: "invited", track: "a", speakerId: null, abstract: { en: "Focused cardiac ultrasound techniques for rapid hemodynamic assessment in emergency patients.", ja: "救急患者における迅速な血行動態評価のための心臓超音波テクニック。" } },
       { id: 10, day: 1, time: "15:30–16:30", title: { en: "Sepsis in Veterinary Patients: 2027 Update", ja: "獣医患者における敗血症：2027年アップデート" }, type: "keynote", track: "main", speakerId: null, abstract: { en: "Latest evidence on sepsis recognition, biomarkers, and goal-directed therapy in dogs and cats.", ja: "犬猫における敗血症の認識、バイオマーカー、目標指向型治療に関する最新のエビデンス。" } },
-      { id: 11, day: 1, time: "17:00–18:00", title: { en: "Poster Session & Networking", ja: "ポスターセッション＆交流会" }, type: "poster", track: "main", speakerId: null, abstract: { en: "Browse poster presentations and connect with researchers from around the world.", ja: "世界中の研究者によるポスター発表をご覧いただき、交流をお楽しみください。" } },
+      { id: 11, day: 1, time: "18:10–18:45", title: { en: "Poster Session & Networking", ja: "ポスターセッション＆交流会" }, type: "poster", track: "main", speakerId: null, abstract: { en: "Browse poster presentations and connect with researchers. Located at the 4F Hall A Foyer.", ja: "4F Hall Aホワイエにて、ポスター発表をご覧いただき、交流をお楽しみください。" } },
       // Day 2 — March 14
       { id: 12, day: 2, time: "09:00–10:00", title: { en: "AI and Machine Learning in Veterinary Emergency Medicine", ja: "獣医救急医療におけるAIと機械学習" }, type: "keynote", track: "main", speakerId: null, abstract: { en: "How artificial intelligence is transforming triage, diagnostics, and prognostication in veterinary emergency care.", ja: "AIがいかに獣医救急医療におけるトリアージ、診断、予後予測を変革しているか。" } },
       { id: 13, day: 2, time: "10:15–11:15", title: { en: "Coagulation Disorders in Critical Patients", ja: "重症患者における凝固障害" }, type: "invited", track: "main", speakerId: null, abstract: { en: "Diagnosis and management of coagulopathies in critically ill veterinary patients.", ja: "重症獣医患者における凝固障害の診断と管理。" } },
