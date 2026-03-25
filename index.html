@@ -543,15 +543,12 @@
 
       // ─── Tab: Speakers ───────────────────────────────────────────
       const renderSpeakers = () => (
-        <div style={{ padding: 16, paddingBottom: 80 }}>
-          <div style={S.sectionTitle}>{l.nav.speakers} ({speakers.length})</div>
-          {speakers.map((sp) => (
-            <div key={sp.id} onClick={() => setSelectedSpeaker(sp)} style={{ ...S.card, display: "flex", alignItems: "center", gap: 14, cursor: "pointer" }}>
-              <Avatar initials={sp.avatar} color={sp.color} size={50} />
-              <div style={{ flex: 1 }}><div style={{ fontSize: 15, fontWeight: 700, color: THEME.tealDeep }}>{sp.name[lang]}</div><div style={{ fontSize: 13, color: "#64748b" }}>{sp.affiliation[lang]}</div><div style={{ marginTop: 4 }}><Badge label={sp.specialty[lang]} colorSet={typeColors.invited} /></div></div>
-              <ChevronRight size={18} color={THEME.textMuted} />
-            </div>
-          ))}
+        <div style={{ padding: 16, paddingBottom: 80, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "60vh" }}>
+          <div style={{ textAlign: "center" }}>
+            <Users size={48} color={THEME.gold} style={{ marginBottom: 16 }} />
+            <div style={{ fontSize: 20, fontWeight: 700, color: THEME.tealDeep, marginBottom: 8 }}>{l.underPreparation}</div>
+            <div style={{ fontSize: 14, color: THEME.textMuted, lineHeight: 1.6 }}>{l.nav.speakers}</div>
+          </div>
         </div>
       );
 
@@ -649,10 +646,11 @@
         </div>
       );
 
-      const tabContent = { home: renderHome, schedule: renderSchedule, venue: renderVenue, info: renderInfo };
+      const tabContent = { home: renderHome, schedule: renderSchedule, speakers: renderSpeakers, venue: renderVenue, info: renderInfo };
       const navItems = [
         { key: "home", icon: Home, label: l.nav.home },
         { key: "schedule", icon: Calendar, label: l.nav.schedule },
+        { key: "speakers", icon: Users, label: l.nav.speakers },
         { key: "venue", icon: Map, label: l.nav.venue },
         { key: "info", icon: Info, label: l.nav.info },
       ];
