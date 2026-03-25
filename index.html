@@ -213,7 +213,7 @@
         tracks: { main: "Main Hall", a: "Hall A", b: "Hall B", ws: "Workshop" },
         search: "Search sessions or speakers…",
         keynote: "Keynote", invited: "Invited", oral: "Oral", workshop: "Workshop", poster: "Poster",
-        bio: "Biography", sessions: "Sessions", noResults: "No results found",
+        bio: "Biography", sessions: "Sessions", noResults: "No results found", underPreparation: "Under Preparation",
         accessInfo: "Access Information",
         address: "Ariake Central Tower, 3-1 Ariake, Koto-ku, Tokyo",
         accessDetails: "Direct connection from Ariake Station (Yurikamome / Rinkai Line)",
@@ -238,7 +238,7 @@
         addToFavorites: "Add to Favorites", removeFromFavorites: "Remove from Favorites",
         favorites: "Favorites", noFavorites: "No favorites yet. Star sessions to save them here.",
         generalInfo: "General Information",
-        mailingList: "Sign up for updates",
+        mailingList: "Sign up for updates", mailingListUrl: "https://event.javeccs.com/en/javeccs-2027",
         hostedBy: "Hosted by: Japanese Veterinary Emergency and Critical Care Society",
       },
       ja: {
@@ -258,7 +258,7 @@
         tracks: { main: "メインホール", a: "A会場", b: "B会場", ws: "ワークショップ" },
         search: "セッション・演者を検索…",
         keynote: "基調講演", invited: "招待講演", oral: "一般口演", workshop: "ワークショップ", poster: "ポスター",
-        bio: "略歴", sessions: "担当セッション", noResults: "結果が見つかりません",
+        bio: "略歴", sessions: "担当セッション", noResults: "結果が見つかりません", underPreparation: "準備中",
         accessInfo: "アクセス情報",
         address: "東京都江東区有明3-1 有明セントラルタワー",
         accessDetails: "有明駅（ゆりかもめ・りんかい線）直結",
@@ -283,7 +283,7 @@
         addToFavorites: "お気に入りに追加", removeFromFavorites: "お気に入りから削除",
         favorites: "お気に入り", noFavorites: "お気に入りはまだありません。セッションの★をタップして保存できます。",
         generalInfo: "一般情報",
-        mailingList: "大会情報アップデートメーリングリスト登録",
+        mailingList: "大会情報アップデートメーリングリスト登録", mailingListUrl: "https://event.javeccs.com/javeccs-2027",
         hostedBy: "主催：一般社団法人 日本獣医救急集中治療学会",
       },
     };
@@ -492,7 +492,7 @@
           </div>
           <div style={{ padding: "20px 16px 0" }}>
             {/* Mailing List CTA */}
-            <button style={{ width: "100%", padding: 14, borderRadius: 10, border: "none", background: `linear-gradient(135deg, ${THEME.gold}, #b89840)`, color: "#fff", fontWeight: 700, fontSize: 14, cursor: "pointer", marginBottom: 20, boxShadow: "0 2px 8px rgba(201,168,76,0.3)" }}>{l.mailingList}</button>
+            <button onClick={() => window.open(l.mailingListUrl, "_blank")} style={{ width: "100%", padding: 14, borderRadius: 10, border: "none", background: `linear-gradient(135deg, ${THEME.gold}, #b89840)`, color: "#fff", fontWeight: 700, fontSize: 14, cursor: "pointer", marginBottom: 20, boxShadow: "0 2px 8px rgba(201,168,76,0.3)" }}>{l.mailingList}</button>
             {/* Quick Info */}
             <div style={S.sectionTitle}>{l.quickInfo}</div>
             {[
@@ -522,49 +522,12 @@
 
       // ─── Tab: Schedule ───────────────────────────────────────────
       const renderSchedule = () => (
-        <div style={{ padding: 16, paddingBottom: 80 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, background: "#fff", borderRadius: 10, padding: "10px 12px", marginBottom: 12, border: "1px solid #e0dcd4" }}>
-            <Search size={16} color={THEME.textMuted} />
-            <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder={l.search} style={{ flex: 1, border: "none", outline: "none", fontSize: 14, background: "transparent", fontFamily: "inherit" }} />
-            {searchQuery && <button onClick={() => setSearchQuery("")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}><X size={16} color={THEME.textMuted} /></button>}
+        <div style={{ padding: 16, paddingBottom: 80, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "60vh" }}>
+          <div style={{ textAlign: "center" }}>
+            <Calendar size={48} color={THEME.gold} style={{ marginBottom: 16 }} />
+            <div style={{ fontSize: 20, fontWeight: 700, color: THEME.tealDeep, marginBottom: 8 }}>{l.underPreparation}</div>
+            <div style={{ fontSize: 14, color: THEME.textMuted, lineHeight: 1.6 }}>{l.nav.schedule}</div>
           </div>
-          <div style={{ display: "flex", gap: 6, marginBottom: 12, overflowX: "auto" }}>
-            {l.days.map((day, i) => (
-              <button key={i} onClick={() => { setSelectedDay(i); setShowFavorites(false); }} style={{ padding: "8px 14px", borderRadius: 20, border: "none", fontSize: 12, fontWeight: 600, background: !showFavorites && selectedDay === i ? THEME.teal : "#e0dcd4", color: !showFavorites && selectedDay === i ? "#fff" : "#475569", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}>{day}</button>
-            ))}
-            <button onClick={() => setShowFavorites(!showFavorites)} style={{ padding: "8px 14px", borderRadius: 20, border: "none", fontSize: 12, fontWeight: 600, background: showFavorites ? THEME.gold : "#e0dcd4", color: showFavorites ? "#fff" : "#475569", cursor: "pointer", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 4, flexShrink: 0 }}><Star size={12} fill={showFavorites ? "#fff" : "none"} />{l.favorites}</button>
-          </div>
-          {!showFavorites && (
-            <div style={{ display: "flex", gap: 6, marginBottom: 16, overflowX: "auto" }}>
-              {[{ key: "all", label: l.allRooms }, ...Object.entries(l.tracks).map(([k, v]) => ({ key: k, label: v }))].map(({ key, label }) => (
-                <button key={key} onClick={() => setSelectedTrack(key)} style={{ padding: "6px 12px", borderRadius: 16, fontSize: 11, fontWeight: 600, border: selectedTrack === key ? `2px solid ${trackColors[key] || THEME.teal}` : "1px solid #e0dcd4", background: selectedTrack === key ? `${trackColors[key] || THEME.teal}11` : "#fff", color: selectedTrack === key ? trackColors[key] || THEME.teal : "#64748b", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}>{label}</button>
-              ))}
-            </div>
-          )}
-          {filteredSessions.length === 0 ? (
-            <div style={{ textAlign: "center", padding: 40, color: THEME.textMuted }}>{showFavorites ? l.noFavorites : l.noResults}</div>
-          ) : filteredSessions.map((s) => {
-            const sp = s.speakerId ? getSpeaker(s.speakerId) : null;
-            const isFav = favorites.includes(s.id);
-            return (
-              <div key={s.id} style={{ ...S.card, padding: 0, overflow: "hidden" }}>
-                <div style={{ display: "flex" }}>
-                  <div style={{ width: 4, background: trackColors[s.track] || THEME.textMuted, flexShrink: 0 }} />
-                  <div style={{ flex: 1, padding: "12px 14px" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}><Badge label={l[s.type]} colorSet={typeColors[s.type]} /><span style={{ fontSize: 11, color: THEME.textMuted }}>{l.tracks[s.track]}</span></div>
-                      <button onClick={(e) => { e.stopPropagation(); toggleFavorite(s.id); }} style={{ background: "none", border: "none", cursor: "pointer", padding: 2 }}><Star size={18} color={isFav ? THEME.gold : "#d1d5db"} fill={isFav ? THEME.gold : "none"} /></button>
-                    </div>
-                    <div onClick={() => setSelectedSession(s)} style={{ cursor: "pointer" }}>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: THEME.tealDeep, marginBottom: 4, lineHeight: 1.4 }}>{s.title[lang]}</div>
-                      <div style={{ fontSize: 12, color: "#64748b", display: "flex", alignItems: "center", gap: 4, marginBottom: sp ? 8 : 0 }}><Clock size={12} />{s.time}</div>
-                      {sp && <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4 }}><Avatar initials={sp.avatar} color={sp.color} size={28} /><div><div style={{ fontSize: 12, fontWeight: 600, color: "#334155" }}>{sp.name[lang]}</div><div style={{ fontSize: 11, color: THEME.textMuted }}>{sp.affiliation[lang]}</div></div></div>}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
         </div>
       );
 
