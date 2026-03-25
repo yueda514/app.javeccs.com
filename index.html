@@ -232,7 +232,13 @@
         social: "Social Event",
         socialInfo: "Welcome Reception — March 13, 18:30 at the Exhibit Hall (included with registration).",
         cme: "CE Credits",
-        cmeInfo: "Continuing education credits available. Please scan your badge at each session.",
+        cmeInfo: "Continuing education credits available. Currently applying for RACE credits.",
+        poster: "Poster Session", posterInfo: "March 13, 18:10–18:45 at the 4F Hall A Foyer.",
+        abstractOral: "General Oral Presentations", abstractInfo: "General abstract oral presentations will be held during the symposium.",
+        stampRally: "Stamp Rally", stampRallyInfo: "Visit sponsor booths and collect stamps to win prizes!",
+        cprBattle: "CPR Battle", cprBattleInfo: "Team-based CPR competition — test your skills against other teams!",
+        raffle: "Raffle", raffleInfo: "Raffle drawing during the Welcome Reception. Don't miss your chance to win!",
+        sponsorLecture: "Sponsor Short Lectures", sponsorLectureInfo: "Short lectures by sponsors held in the Sponsor Room (Room 1, 4F).",
         countdown: "days until the symposium",
         viewSchedule: "View Full Schedule",
         featuredSpeakers: "Featured Speakers",
@@ -282,7 +288,13 @@
         social: "懇親会",
         socialInfo: "ウェルカムレセプション — 3月13日 18:30〜 Exhibit Hall（協賛部屋）にて（参加費込み）",
         cme: "CE単位",
-        cmeInfo: "継続教育単位が取得できます。各セッションでバッジをスキャンしてください。",
+        cmeInfo: "継続教育単位が取得できます。現在、RACEクレジットに申請中です。",
+        poster: "ポスターセッション", posterInfo: "3月13日 18:10〜18:45 4F Hall Aホワイエにて。",
+        abstractOral: "一般演題", abstractInfo: "シンポジウム期間中に一般演題の口演発表を行います。",
+        stampRally: "スタンプラリー", stampRallyInfo: "協賛ブースを回ってスタンプを集めて景品をゲットしよう！",
+        cprBattle: "CPRバトル", cprBattleInfo: "チーム対抗CPR競技会 — 他のチームとスキルを競い合おう！",
+        raffle: "抽選会", raffleInfo: "懇親会内で抽選会を開催します。お見逃しなく！",
+        sponsorLecture: "協賛部屋ショートレクチャー", sponsorLectureInfo: "協賛部屋（Room 1, 4F）にて協賛企業によるショートレクチャーを開催します。",
         countdown: "日後にシンポジウム開催",
         viewSchedule: "プログラムを見る",
         featuredSpeakers: "注目の演者",
@@ -615,16 +627,24 @@
       );
 
       // ─── Tab: Info ───────────────────────────────────────────────
-      const renderInfo = () => (
+      const renderInfo = () => {
+        const infoItems = [
+          { title: l.registration, content: l.regDesk, icon: <User size={18} color={THEME.gold} /> },
+          { title: l.lunch, content: l.lunchInfo, icon: <Clock size={18} color={THEME.gold} /> },
+          { title: l.social, content: l.socialInfo, icon: <Users size={18} color={THEME.gold} /> },
+          { title: l.poster, content: l.posterInfo, icon: <Star size={18} color={THEME.gold} /> },
+          { title: l.abstractOral, content: l.abstractInfo, icon: <Search size={18} color={THEME.gold} /> },
+          { title: l.cme, content: l.cmeInfo, icon: <Info size={18} color={THEME.gold} /> },
+          { title: l.stampRally, content: l.stampRallyInfo, icon: <Map size={18} color={THEME.gold} /> },
+          { title: l.cprBattle, content: l.cprBattleInfo, icon: <Star size={18} color={"#bd1515"} /> },
+          { title: l.raffle, content: l.raffleInfo, icon: <Star size={18} color={THEME.gold} /> },
+          { title: l.sponsorLecture, content: l.sponsorLectureInfo, icon: <Users size={18} color={THEME.gold} /> },
+          { title: l.emergencyContact, content: l.emergencyPhone, icon: <Info size={18} color={"#bd1515"} /> },
+        ];
+        return (
         <div style={{ padding: 16, paddingBottom: 80 }}>
           <div style={S.sectionTitle}>{l.generalInfo}</div>
-          {[
-            { title: l.registration, content: l.regDesk, icon: <User size={18} color={THEME.gold} /> },
-            { title: l.lunch, content: l.lunchInfo, icon: <Clock size={18} color={THEME.gold} /> },
-            { title: l.social, content: l.socialInfo, icon: <Users size={18} color={THEME.gold} /> },
-            { title: l.cme, content: l.cmeInfo, icon: <Star size={18} color={THEME.gold} /> },
-            { title: l.emergencyContact, content: l.emergencyPhone, icon: <Info size={18} color={THEME.red} /> },
-          ].map((item, i) => (
+          {infoItems.map((item, i) => (
             <div key={i} style={S.card}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                 <div style={{ width: 36, height: 36, borderRadius: 8, background: THEME.goldBg, display: "flex", alignItems: "center", justifyContent: "center" }}>{item.icon}</div>
@@ -633,6 +653,7 @@
               <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: 0, paddingLeft: 46 }}>{item.content}</p>
             </div>
           ))}
+          {/* Footer */}
           <div style={{ background: THEME.tealDark, borderRadius: "16px 16px 0 0", padding: "24px 20px 16px", marginTop: 8 }}>
             <div style={{ textAlign: "center" }}>
               <img src={LOGO_WHITE} alt="JaVECCS" style={{ height: 36, marginBottom: 12 }} />
@@ -644,7 +665,8 @@
             </div>
           </div>
         </div>
-      );
+        );
+      };
 
       const tabContent = { home: renderHome, schedule: renderSchedule, speakers: renderSpeakers, venue: renderVenue, info: renderInfo };
       const navItems = [
