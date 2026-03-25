@@ -217,7 +217,12 @@
         accessInfo: "Access Information",
         address: "Ariake Central Tower, 3-1 Ariake, Koto-ku, Tokyo",
         accessDetails: "Direct connection from Ariake Station (Yurikamome / Rinkai Line)",
-        floorGuide: "Floor Guide", floorGuide2: "Washington Hotel 3F", rooms: [{ name: "Hall A", note: "JP/EN Simultaneous Interpretation" }, { name: "Room 1", note: "JP/EN Simultaneous Interpretation" }, { name: "Room 2", note: "Japanese" }, { name: "Reception Room", note: "Japanese" }, { name: "Board Room", note: "English" }], rooms2: [{ name: "Rindou", note: "English Workshop" }, { name: "Cattleya", note: "Japanese Workshop" }],
+        floorGuide: "Floor Guide",
+        mainVenue: "Main Venue", mainVenueLabel: "Ariake Central Tower Hall & Conference",
+        workshopVenue: "Workshop Venue (Mar 13 & 14)", workshopVenueLabel: "Washington Hotel",
+        floor4F: "Ariake Central Hall & Conference 4F", rooms4F: [{ name: "Hall A", note: "JP/EN Simultaneous Interpretation" }, { name: "Room 1", note: "Sponsor Room" }],
+        floor3F: "Ariake Central Hall & Conference 3F", rooms3F: [{ name: "Room 1", note: "JP/EN Simultaneous Interpretation" }, { name: "Room 2", note: "Japanese" }, { name: "Reception Room", note: "Japanese" }, { name: "Board Room", note: "English" }],
+        floorWH: "Washington Hotel 3F", roomsWH: [{ name: "Rindou", note: "English Workshop" }, { name: "Cattleya", note: "Japanese Workshop" }],
         wifiInfo: "Wi-Fi: JaVECCS2027 / Password: veccs2027",
         emergencyContact: "Emergency Contact", emergencyPhone: "+81-3-XXXX-XXXX",
         registration: "Registration",
@@ -262,7 +267,12 @@
         accessInfo: "アクセス情報",
         address: "東京都江東区有明3-1 有明セントラルタワー",
         accessDetails: "有明駅（ゆりかもめ・りんかい線）直結",
-        floorGuide: "フロアガイド", floorGuide2: "ワシントンホテル3F", rooms: [{ name: "Hall A", note: "日英同時通訳" }, { name: "Room 1", note: "日英同時通訳" }, { name: "Room 2", note: "日本語" }, { name: "レセプションルーム", note: "日本語" }, { name: "ボードルーム", note: "英語" }], rooms2: [{ name: "リンドウ", note: "英語実習" }, { name: "カトレア", note: "日本語実習" }],
+        floorGuide: "フロアガイド",
+        mainVenue: "メイン会場", mainVenueLabel: "有明セントラルタワーホール＆カンファレンス",
+        workshopVenue: "実習会場（3月13日・14日）", workshopVenueLabel: "ワシントンホテル",
+        floor4F: "有明セントラルホール＆カンファレンス 4F", rooms4F: [{ name: "Hall A", note: "日英同時通訳" }, { name: "Room 1", note: "協賛部屋" }],
+        floor3F: "有明セントラルホール＆カンファレンス 3F", rooms3F: [{ name: "Room 1", note: "日英同時通訳" }, { name: "Room 2", note: "日本語" }, { name: "レセプションルーム", note: "日本語" }, { name: "ボードルーム", note: "英語" }],
+        floorWH: "ワシントンホテル 3F", roomsWH: [{ name: "リンドウ", note: "英語実習" }, { name: "カトレア", note: "日本語実習" }],
         wifiInfo: "Wi-Fi: JaVECCS2027 / パスワード: veccs2027",
         emergencyContact: "緊急連絡先", emergencyPhone: "+81-3-XXXX-XXXX",
         registration: "受付",
@@ -561,19 +571,40 @@
             <div style={{ fontSize: 13, color: "#475569", lineHeight: 1.7 }}>{l.address}</div>
             <div style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, marginTop: 4 }}>{l.accessDetails}</div>
           </div>
+          {/* Venue Labels */}
+          <div style={S.card}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid #f1f0ec" }}>
+              <Map size={16} color={THEME.teal} />
+              <div><div style={{ fontSize: 14, fontWeight: 700, color: THEME.tealDark }}>{l.mainVenue}</div><div style={{ fontSize: 12, color: "#64748b" }}>{l.mainVenueLabel}</div></div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0" }}>
+              <Map size={16} color={THEME.gold} />
+              <div><div style={{ fontSize: 14, fontWeight: 700, color: THEME.tealDark }}>{l.workshopVenue}</div><div style={{ fontSize: 12, color: "#64748b" }}>{l.workshopVenueLabel}</div></div>
+            </div>
+          </div>
+          {/* Floor Guide */}
           <div style={S.card}>
             <div style={{ fontSize: 14, fontWeight: 700, color: THEME.tealDark, marginBottom: 12 }}>{l.floorGuide}</div>
-            {l.rooms.map((room, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid #f1f0ec" }}>
-                <div style={{ width: 12, height: 12, borderRadius: 3, background: [THEME.teal, THEME.gold, "#3a7a5e", "#8a7030", "#5a3a7a"][i] }} />
+            <div style={{ fontSize: 13, fontWeight: 700, color: THEME.teal, marginBottom: 8 }}>{l.floor4F}</div>
+            {l.rooms4F.map((room, i) => (
+              <div key={"4f"+i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid #f1f0ec" }}>
+                <div style={{ width: 12, height: 12, borderRadius: 3, background: [THEME.teal, THEME.gold][i] }} />
                 <span style={{ fontSize: 14, color: "#334155", fontWeight: 600 }}>{room.name}</span>
                 <span style={{ fontSize: 11, color: THEME.textMuted }}>({room.note})</span>
               </div>
             ))}
-            <div style={{ fontSize: 14, fontWeight: 700, color: THEME.tealDark, marginTop: 16, marginBottom: 12 }}>{l.floorGuide2}</div>
-            {l.rooms2.map((room, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid #f1f0ec" }}>
-                <div style={{ width: 12, height: 12, borderRadius: 3, background: ["#bd1515", "#e67e22"][i] }} />
+            <div style={{ fontSize: 13, fontWeight: 700, color: THEME.teal, marginTop: 16, marginBottom: 8 }}>{l.floor3F}</div>
+            {l.rooms3F.map((room, i) => (
+              <div key={"3f"+i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid #f1f0ec" }}>
+                <div style={{ width: 12, height: 12, borderRadius: 3, background: ["#3a7a5e", "#5a3a7a", "#8a7030", "#bd1515"][i] }} />
+                <span style={{ fontSize: 14, color: "#334155", fontWeight: 600 }}>{room.name}</span>
+                <span style={{ fontSize: 11, color: THEME.textMuted }}>({room.note})</span>
+              </div>
+            ))}
+            <div style={{ fontSize: 13, fontWeight: 700, color: THEME.gold, marginTop: 16, marginBottom: 8 }}>{l.floorWH}</div>
+            {l.roomsWH.map((room, i) => (
+              <div key={"wh"+i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid #f1f0ec" }}>
+                <div style={{ width: 12, height: 12, borderRadius: 3, background: ["#e67e22", "#e67e22"][i] }} />
                 <span style={{ fontSize: 14, color: "#334155", fontWeight: 600 }}>{room.name}</span>
                 <span style={{ fontSize: 11, color: THEME.textMuted }}>({room.note})</span>
               </div>
