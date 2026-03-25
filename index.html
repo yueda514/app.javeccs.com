@@ -224,7 +224,10 @@
         floor3F: "Ariake Central Hall & Conference 3F", rooms3F: [{ name: "Room 1", note: "JP/EN Simultaneous Interpretation" }, { name: "Room 2", note: "Japanese" }, { name: "Reception Room", note: "Japanese" }, { name: "Board Room", note: "English" }],
         floorWH: "Washington Hotel 3F", roomsWH: [{ name: "Rindou", note: "English Workshop" }, { name: "Cattleya", note: "Japanese Workshop" }],
         wifiInfo: "Wi-Fi: JaVECCS2027 / Password: veccs2027",
-        emergencyContact: "Emergency Contact", emergencyPhone: "+81-3-XXXX-XXXX",
+        emergencyContact: "Emergency Contact", emergencyPhone: "support@javeccs.org — During the symposium, please visit the Registration Desk.",
+        lostFound: "Lost & Found", lostFoundInfo: "Please inquire at the Registration Desk.",
+        luncheonSeminar: "Luncheon Seminar", luncheonSeminarInfo: "Sponsored luncheon seminars will be held during lunch breaks.",
+        goods: "JaVECCS Goods", goodsInfo: "JaVECCS merchandise available for purchase next to the Registration Desk.",
         registration: "Registration",
         regDesk: "Registration desk opens at 8:30 AM on March 13 and 8:00 AM on March 14, at the Main Lobby.",
         lunch: "Lunch & Breaks",
@@ -280,7 +283,10 @@
         floor3F: "有明セントラルホール＆カンファレンス 3F", rooms3F: [{ name: "Room 1", note: "日英同時通訳" }, { name: "Room 2", note: "日本語" }, { name: "レセプションルーム", note: "日本語" }, { name: "ボードルーム", note: "英語" }],
         floorWH: "ワシントンホテル 3F", roomsWH: [{ name: "リンドウ", note: "英語実習" }, { name: "カトレア", note: "日本語実習" }],
         wifiInfo: "Wi-Fi: JaVECCS2027 / パスワード: veccs2027",
-        emergencyContact: "緊急連絡先", emergencyPhone: "+81-3-XXXX-XXXX",
+        emergencyContact: "緊急連絡先", emergencyPhone: "support@javeccs.org — 大会期間中は受付までお越しください。",
+        lostFound: "落とし物（Lost & Found）", lostFoundInfo: "受付までお問い合わせください。",
+        luncheonSeminar: "ランチョンセミナー", luncheonSeminarInfo: "昼休憩中に協賛企業によるランチョンセミナーを開催します。",
+        goods: "JaVECCSグッズ販売", goodsInfo: "受付横にてJaVECCSグッズを販売しております。",
         registration: "受付",
         regDesk: "受付はメインロビーにて、3月13日は午前8時30分から、3月14日は午前8時から開始します。",
         lunch: "昼食・休憩",
@@ -619,16 +625,13 @@
               </div>
             ))}
           </div>
-          <div style={{ ...S.card, display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#3a7a5e" }} />
-            <span style={{ fontSize: 13, color: "#475569" }}>{l.wifiInfo}</span>
-          </div>
         </div>
       );
 
       // ─── Tab: Info ───────────────────────────────────────────────
       const renderInfo = () => {
         const infoItems = [
+          { title: "Wi-Fi", content: l.wifiInfo, icon: <Globe size={18} color={THEME.teal} /> },
           { title: l.registration, content: l.regDesk, icon: <User size={18} color={THEME.gold} /> },
           { title: l.lunch, content: l.lunchInfo, icon: <Clock size={18} color={THEME.gold} /> },
           { title: l.social, content: l.socialInfo, icon: <Users size={18} color={THEME.gold} /> },
@@ -638,7 +641,10 @@
           { title: l.stampRally, content: l.stampRallyInfo, icon: <Map size={18} color={THEME.gold} /> },
           { title: l.cprBattle, content: l.cprBattleInfo, icon: <Star size={18} color={"#bd1515"} /> },
           { title: l.raffle, content: l.raffleInfo, icon: <Star size={18} color={THEME.gold} /> },
+          { title: l.luncheonSeminar, content: l.luncheonSeminarInfo, icon: <Clock size={18} color={THEME.gold} /> },
           { title: l.sponsorLecture, content: l.sponsorLectureInfo, icon: <Users size={18} color={THEME.gold} /> },
+          { title: l.goods, content: l.goodsInfo, icon: <Star size={18} color={THEME.gold} /> },
+          { title: l.lostFound, content: l.lostFoundInfo, icon: <Search size={18} color={THEME.textMuted} /> },
           { title: l.emergencyContact, content: l.emergencyPhone, icon: <Info size={18} color={"#bd1515"} /> },
         ];
         return (
